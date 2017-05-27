@@ -18,15 +18,15 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid Margin="0,2">
-                            <TextBlock Text="{Binding Name}" />
-                            <TextBlock Text="{Binding NumberAvailable}" HorizontalAlignment="Right" />
+                            <TextBlock Text="{Binding ProductDetails.Name}" />
+                            <TextBlock Text="{Binding ProductDetails.Quantity}" HorizontalAlignment="Right" />
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
         </Grid>
         <TextBlock HorizontalAlignment="Left" Margin="30,230,0,0" TextWrapping="Wrap" Text="Current budget:" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="119,230,0,0" TextWrapping="Wrap" Text="$24 USD" VerticalAlignment="Top"/>
+        <TextBlock Name="Balance" HorizontalAlignment="Left" Margin="119,230,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Button Content="Buy" HorizontalAlignment="Left" Margin="287,230,0,0" VerticalAlignment="Top" Width="75" Name="Buy" Click="Click_Buy"/>
         <Button Content="Refresh" HorizontalAlignment="Left" Margin="385,231,0,0" VerticalAlignment="Top" Width="75" Name="Refresh"  Click="Click_Refresh"/>
     </Grid>

@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ThatOneStore.FruitShopReference;
 
 namespace ThatOneStore
 {
@@ -19,6 +20,8 @@ namespace ThatOneStore
     /// </summary>
     public partial class Login : Window
     {
+        public static LoginDetails LoginDetails { get; set; }
+
         public Login()
         {
             InitializeComponent();
@@ -26,22 +29,32 @@ namespace ThatOneStore
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            String Iname = textBoxName.Text;
-            String Ipassword = passwordBox1.Password;
-            String name = "test";
-            String password = "test";
-            if (Iname.Equals(name) && Ipassword.Equals(password))
+            String username = textBoxName.Text;
+            String password = passwordBox1.Password;
+
+            var loginDetails = new LoginDetails()
             {
+                Username = username,
+                Password = password,
+            };
+
+            FruitShopClient service = new FruitShopClient();
+
+            if (service.LoginCustomer(loginDetails))
+            {
+                LoginDetails = loginDetails;
+
                 Store store = new Store();
                 store.Show();
                 Close();
-                //MessageBox.Show("Logged in!\nJust kidding. This is a really bad application, so we can't actually log you in yet. Better luck next time though!");
+            } else
+            {
+                MessageBox.Show("Wrong username or password!");
             }
         }
 
         private void buttonRegister_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Stuff happened, you clicked register");
             Registration registration = new Registration();
             registration.Show();
             Close();

@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ThatOneStore.FruitShopReference;
 
 namespace ThatOneStore
 {
@@ -19,114 +20,90 @@ namespace ThatOneStore
     /// </summary>
     public partial class Store : Window
     {
-        private static List<Product> items = new List<Product>();
-        private static String inventory = "hoi";
-        private static List<Product> myInventory = new List<Product>();
+        private static List<ProductType> products = new List<ProductType>();
         
         public Store()
         {
             InitializeComponent();
-            items.Add(new Product() { Name = "Black Ops II", NumberAvailable = 5 });
-            items.Add(new Product() { Name = "Mario Kart", NumberAvailable = 3 });
-            items.Add(new Product() { Name = "Awesomely Awesomeness", NumberAvailable = 1 });
 
-            Inventory.Text = inventory;
-            ProductListBox.ItemsSource = items;
+            FruitShopClient service = new FruitShopClient();
+
+            RefreshMyInventory();
+            RefreshStock();
+            RefreshBalance();
         }
 
         private void Click_Buy(object sender, RoutedEventArgs e)
         {
-            Product item = null;
-            String selectedItem = null;
+            ProductType selectedItem = null;
 
             try
             {
-                selectedItem = ProductListBox.SelectedItem.ToString();
+                selectedItem = (ProductType) ProductListBox.SelectedItem;
             }
             catch(NullReferenceException)
             {
-                
+                // Do nothing.
             }
 
-            foreach(Product p in items)
+            if (selectedItem != null)
             {
-                if (p.Name.Equals(selectedItem))
-                {
-                    item = p;
-                    break;
-                }
-            }
 
-            if (item != null)
+                FruitShopClient service = new FruitShopClient();
+
+                var message = service.BuyProduct(Login.LoginDetails, selectedItem.Id);
+
+                if (!message.IsError)
+                {
+                    RefreshMyInventory();
+                    RefreshStock();
+                    RefreshBalance();
+                }
+
+                MessageBox.Show(message.Content);
+            } else
             {
-                var hits = 0;
-                foreach (Product p in myInventory)
-                {
-                    if (item.Name.Equals(p.Name)){
-                        p.NumberAvailable += 1;
-                        hits += 1;
-                        break;
-                    }
-                }
-
-                if (hits == 0)
-                {
-                    Product p = new Product() { Name = item.Name, NumberAvailable = 1 } ;
-                    myInventory.Add(p);
-                }
-
-                item.NumberAvailable -= 1;
-
-                if (item.NumberAvailable == 0)
-                {
-                    items.Remove(item);                    
-                }                
+                MessageBox.Show("Please select a product!");
             }
-            RefreshMyInventory();
-            Inventory.Text = inventory;
-            ProductListBox.UpdateLayout();
-            ProductListBox.Items.Refresh();
         }
 
         private void Click_Refresh(object sender, RoutedEventArgs e)
         {
-            var hits = 0;
-            foreach (Product p in items)
-            {
-                if (p.Name.Equals("New World"))
-                {
-                    p.NumberAvailable += 1;
-                    hits += 1;
-                }
-            }
-            if (hits == 0)
-            {
-                items.Add(new Product() { Name = "New World", NumberAvailable = 1 }); 
-            }
-            
-            ProductListBox.ItemsSource = items;
-            ProductListBox.UpdateLayout();
-            ProductListBox.Items.Refresh();
+            RefreshStock();
         }
 
         private void RefreshMyInventory()
         {
-            inventory = "";
-            foreach (Product p in myInventory)
+            FruitShopClient service = new FruitShopClient();
+            var myInventory = service.GetBoughtProducts(Login.LoginDetails);
+
+            string inventory = "";
+            foreach (OwnedProductType ownedProduct in myInventory)
             {
-                inventory += p.Name + " " + p.NumberAvailable + "\n";
+                inventory += ownedProduct.ProductDetails.Name + " " + 
+                    ownedProduct.Quantity + "\n";
             }
+
+            Inventory.Text = inventory;
         }
-    }
 
-    public class Product {
-        public string Name { get; set; }
-        public int NumberAvailable { get; set; }
-
-        public override string ToString()
+        private void RefreshStock()
         {
-            return Name;
+            FruitShopClient service = new FruitShopClient();
+            var availableProducts = service.GetAvailableProducts();
+
+            ProductListBox.ItemsSource = availableProducts;
+
+            ProductListBox.UpdateLayout();
+            ProductListBox.Items.Refresh();
+        }
+
+        private void RefreshBalance()
+        {
+            FruitShopClient service = new FruitShopClient();
+            Double balance = service.GetBalance(Login.LoginDetails);
+            Balance.Text = "$" + balance + " USD";
         }
     }
-
 }
+

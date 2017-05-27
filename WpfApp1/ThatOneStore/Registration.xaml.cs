@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ThatOneStore.FruitShopReference;
 
 namespace ThatOneStore
 {
@@ -49,9 +50,9 @@ namespace ThatOneStore
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-
-            string Name = textBoxName.Text;
+            string username = textBoxName.Text;
             string password = passwordBox1.Password;
+
             if (passwordBox1.Password.Length == 0)
             {
                 errormessage.Text = "Enter password.";
@@ -70,8 +71,17 @@ namespace ThatOneStore
             else
             {
                 errormessage.Text = "";
-                // Vul aan met daadwerkelijke registratie dingen.
-                MessageBox.Show("Usually you'd be registered now, but meh, no backend.");
+
+                FruitShopClient service = new FruitShopClient();
+
+                var loginDetails = new LoginDetails()
+                {
+                    Username = username,
+                    Password = password
+                };
+
+                Message message = service.RegisterUser(loginDetails);
+                MessageBox.Show(message.Content);
             }
 
         }

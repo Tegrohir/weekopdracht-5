@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="FruitShop" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:60159/FruitShop.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:60159/FruitShop.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:60159/FruitShop.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/FruitShop" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IFruitShop_GetAvailableProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailableProducts" />
+  </wsdl:message>
+  <wsdl:message name="IFruitShop_GetAvailableProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailableProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFruitShop_RegisterUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterUser" />
+  </wsdl:message>
+  <wsdl:message name="IFruitShop_RegisterUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFruitShop_LoginCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoginCustomer" />
+  </wsdl:message>
+  <wsdl:message name="IFruitShop_LoginCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFruitShop_AddProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddProduct" />
+  </wsdl:message>
+  <wsdl:message name="IFruitShop_AddProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFruitShop_BuyProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuyProduct" />
+  </wsdl:message>
+  <wsdl:message name="IFruitShop_BuyProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuyProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFruitShop_GetBoughtProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBoughtProducts" />
+  </wsdl:message>
+  <wsdl:message name="IFruitShop_GetBoughtProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBoughtProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFruitShop_GetBalance_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBalance" />
+  </wsdl:message>
+  <wsdl:message name="IFruitShop_GetBalance_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBalanceResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IFruitShop">
+    <wsdl:operation name="GetAvailableProducts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFruitShop/GetAvailableProducts" message="tns:IFruitShop_GetAvailableProducts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFruitShop/GetAvailableProductsResponse" message="tns:IFruitShop_GetAvailableProducts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFruitShop/RegisterUser" message="tns:IFruitShop_RegisterUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFruitShop/RegisterUserResponse" message="tns:IFruitShop_RegisterUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFruitShop/LoginCustomer" message="tns:IFruitShop_LoginCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFruitShop/LoginCustomerResponse" message="tns:IFruitShop_LoginCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFruitShop/AddProduct" message="tns:IFruitShop_AddProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFruitShop/AddProductResponse" message="tns:IFruitShop_AddProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BuyProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFruitShop/BuyProduct" message="tns:IFruitShop_BuyProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFruitShop/BuyProductResponse" message="tns:IFruitShop_BuyProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoughtProducts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFruitShop/GetBoughtProducts" message="tns:IFruitShop_GetBoughtProducts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFruitShop/GetBoughtProductsResponse" message="tns:IFruitShop_GetBoughtProducts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBalance">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFruitShop/GetBalance" message="tns:IFruitShop_GetBalance_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFruitShop/GetBalanceResponse" message="tns:IFruitShop_GetBalance_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IFruitShop" type="tns:IFruitShop">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAvailableProducts">
+      <soap:operation soapAction="http://tempuri.org/IFruitShop/GetAvailableProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUser">
+      <soap:operation soapAction="http://tempuri.org/IFruitShop/RegisterUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginCustomer">
+      <soap:operation soapAction="http://tempuri.org/IFruitShop/LoginCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddProduct">
+      <soap:operation soapAction="http://tempuri.org/IFruitShop/AddProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuyProduct">
+      <soap:operation soapAction="http://tempuri.org/IFruitShop/BuyProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoughtProducts">
+      <soap:operation soapAction="http://tempuri.org/IFruitShop/GetBoughtProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBalance">
+      <soap:operation soapAction="http://tempuri.org/IFruitShop/GetBalance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FruitShop">
+    <wsdl:port name="BasicHttpBinding_IFruitShop" binding="tns:BasicHttpBinding_IFruitShop">
+      <soap:address location="http://localhost:60159/FruitShop.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

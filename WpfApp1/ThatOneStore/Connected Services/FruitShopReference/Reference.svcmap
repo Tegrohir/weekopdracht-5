@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="3074e0fe-c91c-4f51-a3b5-672a3831c2f6" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:60159/FruitShop.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="FruitShop.wsdl" MetadataType="Wsdl" ID="8083314b-67da-4801-be97-6ead9a0a5b66" SourceId="1" SourceUrl="http://localhost:60159/FruitShop.svc?wsdl" />
+    <MetadataFile FileName="FruitShop.disco" MetadataType="Disco" ID="cff6286c-6947-4ce9-80f9-c05690d41bbc" SourceId="1" SourceUrl="http://localhost:60159/FruitShop.svc?disco" />
+    <MetadataFile FileName="FruitShop.xsd" MetadataType="Schema" ID="52bf5615-43b3-4581-bb2b-ff0059f88bf7" SourceId="1" SourceUrl="http://localhost:60159/FruitShop.svc?xsd=xsd0" />
+    <MetadataFile FileName="FruitShop1.xsd" MetadataType="Schema" ID="09a46931-756c-491b-8b0e-2518d80355da" SourceId="1" SourceUrl="http://localhost:60159/FruitShop.svc?xsd=xsd1" />
+    <MetadataFile FileName="FruitShop2.xsd" MetadataType="Schema" ID="19518050-c527-4e99-a31c-6e29f1b6df31" SourceId="1" SourceUrl="http://localhost:60159/FruitShop.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -31,7 +31,7 @@
                 <!--   <RowDefinition Height="12*" />-->
             </Grid.RowDefinitions>
             <TextBlock Height="20" HorizontalAlignment="Left" Margin="67,0,0,0" x:Name ="errormessage" VerticalAlignment="Top" Width="247"  OpacityMask="Crimson" Foreground="#FFE5572C" />
-            <TextBlock Height="23" HorizontalAlignment="Left" Margin="67,20,0,0" Name="textBlockName" Text="First Name:" VerticalAlignment="Top" Width="110" />
+            <TextBlock Height="23" HorizontalAlignment="Left" Margin="67,20,0,0" Name="textBlockName" Text="Username:" VerticalAlignment="Top" Width="110" />
             <TextBlock Height="23" HorizontalAlignment="Left" Margin="67,49,0,0" Name="textBlockPassword" Text="Password:" VerticalAlignment="Top" Width="110"  />
             <TextBlock Height="23" HorizontalAlignment="Left" Margin="67,78,0,0" Name="textBlockConfirmPwd" Text="ConfirmPassword:" VerticalAlignment="Top" Width="110" />
             <TextBox Height="23" HorizontalAlignment="Left" Margin="183,20,0,0" Name="textBoxName" VerticalAlignment="Top" Width="222" />
